@@ -1,4 +1,4 @@
-const e = require("express");
+
 import Image from "next/image";
 import styles from "./contact.module.css";
 import { addMessage } from "@/lib/action";
