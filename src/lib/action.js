@@ -73,6 +73,7 @@ export const handleGithubLogin = async() => {
   };
   export const handleLogout = async() => {
     await signOut();
+    return Response.redirect(new URL("https://byte-brilliance-zeta.vercel.app/", request.nextUrl));
   };
 
   export const register = async (previousState, formData) => {
