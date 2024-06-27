@@ -1,5 +1,5 @@
 
-const e = require("express");
+
 import Image from "next/image";
 import style from "./blogpage.module.css";
 import { getPost } from "@/lib/data";
