@@ -1,5 +1,6 @@
 import { connectToDb } from "@/lib/connectToDb";
 import { Post } from "@/lib/models";
+import { NextResponse } from "next/server";
 
 export const GET = async (request) => {
     try {
@@ -8,6 +9,6 @@ export const GET = async (request) => {
         return NextResponse.json(posts);
 
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.log(error);
     }
     }
