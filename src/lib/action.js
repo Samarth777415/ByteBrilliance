@@ -72,7 +72,7 @@ export const handleGithubLogin = async() => {
     await signIn("google");
   };
   export const handleLogout = async() => {
-    await signOut();
+       await signOut({ callbackUrl: "https://byte-brilliance-zeta.vercel.app/"  });
   };
 
   export const register = async (previousState, formData) => {
