@@ -113,18 +113,19 @@ export const handleGithubLogin = async() => {
   
   
   
-export const login = async (prevState, formData) => {
-  const { username, password } = Object.fromEntries(formData);
-
-  try {
-       await signIn("credentials", { username, password });
-  } catch (err) {
-    if (err.message.includes("CredentialsSignin")) {
-      return { error: "Invalid username or password" };
+  export const login = async (prevState, formData) => {
+    const { username, password } = Object.fromEntries(formData);
+  
+    try {
+      await signIn("credentials", { username, password });
+    } catch (err) {
+    
+      
+        return { error: "Invalid username or password" };
+      
+      throw err;
     }
-    throw err;
-  }
-};
+  };
 export const addUser = async (prevState,formData) => {
   const { username, email, password, img } = Object.fromEntries(formData);
 
