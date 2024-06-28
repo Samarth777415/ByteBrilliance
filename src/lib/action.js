@@ -129,7 +129,7 @@ export const handleGithubLogin = async() => {
       if (err.message.includes("CredentialsSignin")) {
         return { error: "Invalid username or password" };
       }
-      // throw err;
+      throw err;
     }
   };
 
