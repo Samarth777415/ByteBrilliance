@@ -72,7 +72,7 @@ export const {
             await newUser.save();
           }
         } catch (err) {
-          console.log(err);
+          throw new Error("Wrong credentials!")
           return false;
         }
       }

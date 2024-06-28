@@ -53,17 +53,20 @@ export const deletePost = async (formData) => {
 
 
 export const addMessage = async (formData) => {
-    const {name,email,phone,message} = Object.fromEntries(formData);
+  const { name, email, phone, message } = Object.fromEntries(formData);
+
+  if (!name || !email || !phone || !message) {
+    return { error: "Fill the details" }
+  }
+
   try {
     connectToDb();
-    const newMessage = await new Message({name,email,phone,message});
-    await newMessage.save();  
-    console.log('message sent');
-
-    }
-    catch (error) {
-        throw new Error(error);
-    }
+    const newMessage = await new Message({ name, email, phone, message });
+    await newMessage.save();
+    console.log('Message sent');
+  } catch (error) {
+    return { error: "Wrong credential" };
+  }
 };
 export const handleGithubLogin = async() => {
     await signIn("github");
@@ -119,10 +122,8 @@ export const login = async (prevState, formData) => {
   try {
        await signIn("credentials", { username, password });
   } catch (err) {
-    if (err.message.includes("CredentialsSignin")) {
-      return { error: "Invalid username or password" };
-    }
-    throw err;
+    return { error: "Wrong credential" };
+    
   }
 };
 export const addUser = async (prevState,formData) => {
