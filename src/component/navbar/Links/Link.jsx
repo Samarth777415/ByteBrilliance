@@ -33,7 +33,7 @@ const Links = ({session}) => {
     <div className={styles.container}>
       <div className={styles.links}>
         {links.map((link) => (
-          <NavLink item={link} key={link.title} />
+          <NavLink item={link} key={link.title} setOpen={setOpen} />
         ))}
         {session?.user ? (
           <>
@@ -57,7 +57,7 @@ const Links = ({session}) => {
       {open && (
         <div className={styles.mobileLinks}>
         {links.map((link) => (
-          <NavLink  item={link} key={link.title} />
+          <NavLink item={link} key={link.title} setOpen={setOpen} />
         ))}
         {session?.user ? (
           <>
