@@ -4,6 +4,7 @@ import { connectToDb } from "./connectToDb";
 import { Message, Post,User } from "./models";
 import { signIn,signOut } from "@/lib/auth";
 import bcrypt from "bcryptjs";
+import { redirect } from "next/dist/server/api-utils";
 
 
 // export const addPost = async (formData) => {
@@ -116,17 +117,22 @@ export const handleGithubLogin = async() => {
   };
   
   
-  
   export const login = async (prevState, formData) => {
     const { username, password } = Object.fromEntries(formData);
-
+  
     try {
       await signIn("credentials", { username, password });
-  
+      redirect("/");
     } catch (err) {
-      return { error: "Invalid username or password" };
+      console.log(err);
+  
+      if (err.message.includes("CredentialsSignin")) {
+        return { error: "Invalid username or password" };
+      }
+      // throw err;
     }
   };
+
 export const addUser = async (prevState,formData) => {
   const { username, email, password, img } = Object.fromEntries(formData);
 

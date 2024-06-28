@@ -1,7 +1,6 @@
 
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
-import Google from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { connectToDb } from "./connectToDb";
 import { User } from "./models";
@@ -24,7 +23,8 @@ const login = async (credentials) => {
 
     return user;
   } catch (err) {
-    return { error: "Failed to login!" };
+    console.log(err);
+    throw new Error("Failed to login!");
   }
 };
 
