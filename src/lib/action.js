@@ -55,9 +55,9 @@ export const deletePost = async (formData) => {
 export const addMessage = async (formData) => {
   const { name, email, phone, message } = Object.fromEntries(formData);
 
-  if (!name || !email || !phone || !message) {
-    return { error: "Fill the details" }
-  }
+  // if (!name || !email || !phone || !message) {
+  //   return { error: "Fill the details" }
+  // }
 
   try {
     connectToDb();
