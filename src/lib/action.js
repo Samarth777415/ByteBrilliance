@@ -53,17 +53,21 @@ export const deletePost = async (formData) => {
 
 
 export const addMessage = async (formData) => {
-    const {name,email,phone,message} = Object.fromEntries(formData);
+  const { name, email, phone, message } = Object.fromEntries(formData);
+
+  // Check if any element of formData is missing
+  if (!name || !email || !phone || !message) {
+    return { error: "Please provide all the required information" };
+  }
+
   try {
     connectToDb();
-    const newMessage = await new Message({name,email,phone,message});
-    await newMessage.save();  
+    const newMessage = await new Message({ name, email, phone, message });
+    await newMessage.save();
     console.log('message sent');
-
-    }
-    catch (error) {
-        throw new Error(error);
-    }
+  } catch (error) {
+    return { error: "Something went wrong!" };
+  }
 };
 export const handleGithubLogin = async() => {
     await signIn("github");
