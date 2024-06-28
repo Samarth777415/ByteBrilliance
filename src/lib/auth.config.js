@@ -39,7 +39,7 @@ export const authConfig = {
         // ONLY UNAUTHENTICATED USERS CAN REACH THE LOGIN PAGE
   
         if (isOnLoginPage && user) {
-          return Response.redirect(new URL("https://byte-brilliance-zeta.vercel.app/", request.nextUrl));
+          return Response.redirect(new URL("https://byte-brilliance-sigma.vercel.app/", request.nextUrl));
         }
   
         return true
