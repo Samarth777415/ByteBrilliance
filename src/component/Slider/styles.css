@@ -80,7 +80,7 @@ body {
   .navigation-wrapper {
     display: flex;
     height: 75vh;
-    position: relative;
+    position: fixed;
   }
   
   .dots {
